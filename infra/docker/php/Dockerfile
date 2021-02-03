@@ -1,6 +1,6 @@
 FROM node:14-buster as node
 FROM php:7.4-apache-buster
-LABEL maintainer="ucan-lab <yes@u-can.pro>"
+LABEL maintainer="Erioquest"
 SHELL ["/bin/bash", "-oeux", "pipefail", "-c"]
 
 # timezone environment
@@ -14,7 +14,7 @@ ENV TZ=UTC \
   COMPOSER_HOME=/composer
 
 # composer command
-COPY --from=composer:2.0 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:1.8.5 /usr/bin/composer /usr/bin/composer
 # node command
 COPY --from=node /usr/local/bin /usr/local/bin
 # npm command
@@ -23,13 +23,13 @@ COPY --from=node /usr/local/lib /usr/local/lib
 COPY --from=node /opt /opt
 
 RUN apt-get update && \
-  apt-get -y install git libicu-dev libonig-dev libzip-dev unzip locales && \
+  apt-get -y install git libicu-dev libonig-dev libjpeg-dev libpng-dev libwebp-dev libfreetype6-dev libzip-dev libbz2-dev unzip locales && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* && \
   locale-gen en_US.UTF-8 && \
   localedef -f UTF-8 -i en_US en_US.UTF-8 && \
   a2enmod rewrite && \
-  docker-php-ext-install intl pdo_mysql zip bcmath && \
+  docker-php-ext-install intl pdo_mysql zip bcmath gd pcntl sockets mbstring bz2 && \
   composer config -g process-timeout 3600 && \
   composer config -g repos.packagist composer https://packagist.org
 
