@@ -23,7 +23,7 @@ COPY --from=node /usr/local/lib /usr/local/lib
 COPY --from=node /opt /opt
 
 RUN apt-get update && \
-  apt-get -y install git libicu-dev libonig-dev libjpeg-dev libpng-dev libwebp-dev libfreetype6-dev libzip-dev libbz2-dev unzip locales && \
+  apt-get -y install git redis-server libicu-dev libonig-dev libjpeg-dev libpng-dev libwebp-dev libfreetype6-dev libzip-dev libbz2-dev unzip locales && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* && \
   locale-gen en_US.UTF-8 && \
