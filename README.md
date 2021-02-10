@@ -13,10 +13,15 @@ Apache version of [docker-laravel](https://github.com/ucan-lab/docker-laravel).
 ## Usage
 
 ```bash
-$ git clone git@github.com:ucan-lab/docker-laravel-apache.git
+# clone docker files
+$ git clone git@github.com:Tsunehito/docker-laravel-apache.git
 $ cd docker-laravel-apache
-$ make create-project # Install the latest Laravel project
-$ make install-recommend-packages # Not required
+
+# clone plantforwarder project
+$ git clone git@github.com:seitymoe/plantforwarder.git docker-laravel-apache/backend
+$ cd docker-laravel-apache
+
+$ make init
 ```
 
 http://localhost
@@ -34,7 +39,7 @@ Read this [Makefile](https://github.com/ucan-lab/docker-laravel-apache/blob/mast
 
 - Base image
   - [php](https://hub.docker.com/_/php):7.4-apache-buster
-  - [composer](https://hub.docker.com/_/composer):2.0
+  - [composer](https://hub.docker.com/_/composer):1.8.5
   - [node](https://hub.docker.com/_/node):node:14-buster
 
 ### db container
