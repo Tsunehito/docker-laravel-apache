@@ -1,5 +1,6 @@
 FROM node:14-buster as node
-FROM php:7.4-apache-buster
+#FROM php:7.4-apache-buster
+FROM php:7.2.8-apache-stretch
 LABEL maintainer="Erioquest"
 SHELL ["/bin/bash", "-oeux", "pipefail", "-c"]
 
@@ -27,7 +28,7 @@ RUN apt-get update && \
                                 libicu-dev libonig-dev libjpeg-dev libpng-dev libwebp-dev libfreetype6-dev libzip-dev libbz2-dev unzip locales \
                                 xserver-xorg x11-apps \
                                 gtk2-engines-pixbuf \
-                                chromium && \
+                                chromium libatk-bridge2.0-0 libgtk-3-0 libxkbcommon0 && \
 #                                xorg xvfb gtk2-engines-pixbuf \
 #								fonts-liberation libappindicator3-1 libasound2 libatk-bridge2.0-0 libgtk-3-0 libnspr4 libnss3 libx11-xcb1 libxss1 libxtst6 xdg-utils \
 #                                dbus-x11 xfonts-base xfonts-100dpi xfonts-75dpi xfonts-cyrillic xfonts-scalable && \
