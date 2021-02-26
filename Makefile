@@ -25,7 +25,7 @@ init:
 	docker-compose exec web cp .env.example .env
 	docker-compose exec web php artisan key:generate
 	docker-compose exec web php artisan storage:link
-	@make fresh
+# 	@make fresh
 remake:
 	@make destroy
 	@make init

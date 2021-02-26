@@ -4,6 +4,9 @@ FROM php:7.2.8-apache-stretch
 LABEL maintainer="Erioquest"
 SHELL ["/bin/bash", "-oeux", "pipefail", "-c"]
 
+# locale for windows
+# ARG DEBIAN_FRONTEND=noninteractive
+
 # timezone environment
 ENV TZ=UTC \
   # locale
